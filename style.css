@@ -1,0 +1,254 @@
+:root {
+  --off-white: #fffdfa;
+  --grayish-blue: #c5c6ce;
+  --dark-grayish-blue: #5d5f79;
+  --very-dark-blue: #00001a;
+  --soft-orange: #e9ab53;
+  --soft-red: #f15e50;
+}
+* {
+  margin: 0;
+  padding: 0;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+body {
+  font-family: "Inter", sans-serif;
+  font-size: 15px;
+}
+.container {
+  padding-left: 15px;
+  padding-right: 15px;
+  margin-left: auto;
+  margin-right: auto;
+}
+/* Small */
+@media (min-width: 768px) {
+  .container {
+    width: 750px;
+  }
+}
+/* Medium */
+@media (min-width: 992px) {
+  .container {
+    width: 970px;
+  }
+}
+/* Large   */
+@media (min-width: 1200px) {
+  .container {
+    width: 1170px;
+  }
+}
+nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+nav ul {
+  display: flex;
+  align-items: center;
+  list-style: none;
+  margin-top: 30px;
+}
+nav .logo {
+  margin-top: 30px;
+  user-select: none;
+}
+nav ul li {
+  margin-left: 30px;
+  cursor: pointer;
+  transition: 0.3s;
+  user-select: none;
+}
+nav ul li:hover {
+  color: var(--soft-red);
+}
+nav .checkbtn {
+  cursor: pointer;
+  margin-top: 30px;
+  display: none;
+}
+nav .checkbtn i {
+  content: url("imgs/icon-menu.svg");
+}
+#check {
+  display: none;
+}
+@media (max-width: 767px) {
+  nav .logo {
+    width: 3.5em;
+  }
+  nav .checkbtn {
+    display: block;
+    z-index: 9999;
+  }
+  nav ul {
+    position: fixed;
+    flex-direction: column;
+    color: var(--very-dark-blue);
+    align-items: flex-start;
+    padding-top: 100px;
+    width: 60%;
+    background-color: #fefefb;
+    right: -100%;
+    top: -30px;
+    height: calc(100vh + 30px);
+    transition: 0.5s;
+  }
+  nav ul li {
+    margin-top: 20px;
+  }
+  #check:checked ~ ul {
+    right: 0;
+  }
+  #check:checked ~ label i {
+    content: url("imgs/icon-menu-close.svg");
+  }
+  nav ul::before {
+    left: 0;
+    top: -30px;
+    width: 40%;
+    height: calc(100vh + 30px);
+    opacity: 0.3;
+  }
+  #check:checked ~ ul::before {
+    content: "";
+    position: fixed;
+    animation: fix 0.5s 0.3s linear both;
+  }
+}
+@keyframes fix {
+  100% {
+    background-color: #f4f4f4;
+  }
+}
+main {
+  display: flex;
+  margin-top: 3.5em;
+}
+main .web {
+  margin-right: 1.5em;
+}
+main .web img {
+  max-width: 100%;
+  user-select: none;
+}
+main .web .info {
+  margin-top: 1.25em;
+  display: flex;
+}
+main .web .info h1 {
+  font-size: 2.5em;
+  font-weight: 800;
+  color: var(--very-dark-blue);
+  margin-right: 2em;
+}
+main .web .info p {
+  line-height: 1.6;
+  color: var(--dark-grayish-blue);
+}
+main .web .info span {
+  color: var(--off-white);
+  padding: 10px 24px;
+  background-color: var(--soft-red);
+  text-transform: uppercase;
+  letter-spacing: 4px;
+  display: inline-block;
+  margin-top: 1.5em;
+  cursor: pointer;
+  transition: 0.3s;
+}
+main .web .info span:hover {
+  background-color: var(--very-dark-blue);
+}
+main .new {
+  background-color: var(--very-dark-blue);
+  color: var(--off-white);
+  padding: 20px;
+}
+main .new h1 {
+  color: var(--soft-orange);
+  margin-bottom: 0.75em;
+}
+main .new div {
+  padding-top: 15px;
+  margin-top: 15px;
+}
+main .new div:not(:last-child) {
+  border-bottom: 1px solid var(--dark-grayish-blue);
+  padding: 15px 0 25px;
+  margin: 15px 0;
+}
+main .new div h3:hover {
+  cursor: pointer;
+  transition: 0.3s;
+  color: var(--soft-orange);
+}
+main .new div p {
+  margin-top: 0.25em;
+  color: var(--grayish-blue);
+}
+@media (max-width: 767px) {
+  main {
+    flex-direction: column;
+  }
+  main .web {
+    margin: 0;
+  }
+  main .web .info {
+    flex-direction: column;
+  }
+  main .web .info h1 {
+    margin-right: 0;
+  }
+  main .web .text {
+    margin-bottom: 4em;
+  }
+}
+.cards {
+  margin-top: 4em;
+  margin-bottom: 5rem;
+  display: flex;
+}
+.cards .card {
+  display: flex;
+  align-items: flex-start;
+  counter-increment: card-info;
+}
+.cards .card img {
+  width: 100px;
+  max-width: 100%;
+}
+.cards .card .info {
+  padding: 0 20px;
+}
+.cards .card .info::before {
+  content: "0" counter(card-info);
+  color: var(--grayish-blue);
+  font-size: 2em;
+  font-weight: 800;
+}
+.cards .card .info h4 {
+  font-weight: 800;
+  color: var(--very-dark-blue);
+  margin: 0.5em 0;
+  transition: 0.3s;
+  cursor: pointer;
+}
+.cards .card .info h4:hover {
+  color: var(--soft-red);
+}
+.cards .card .info p {
+  color: var(--dark-grayish-blue);
+  line-height: 1.5;
+}
+@media (max-width: 767px) {
+  .cards {
+    flex-direction: column;
+  }
+  .cards .card:not(:first-child) {
+    margin-top: 2em;
+  }
+}
